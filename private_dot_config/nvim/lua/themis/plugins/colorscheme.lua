@@ -1,0 +1,42 @@
+return {
+	{
+		"EdenEast/nightfox.nvim",
+		config = function()
+			-- Setup nightfox before applying the colorscheme
+			require("nightfox").setup({
+				options = { transparent = false },
+			})
+			-- Apply the colorscheme
+			--vim.cmd("colorscheme terafox")
+		end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+
+		config = function()
+			require("catppuccin").setup({
+				background = { -- :h background
+					light = "latte",
+					dark = "frappe",
+				},
+			})
+			--			vim.cmd("colorscheme catppuccin")
+		end,
+	},
+	{
+		"projekt0n/github-nvim-theme",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require("github-theme").setup({
+				options = {
+					transparent = false,
+				},
+			})
+
+			vim.cmd("colorscheme github_dark")
+		end,
+	},
+}
